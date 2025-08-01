@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>corbin aquino</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #f9fafb;
+            color: #374151;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 700px;
+            width: 100%;
+            text-align: left;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        h1 {
+            font-size: clamp(2.5rem, 4vw, 4rem);
+            font-weight: bold;
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: #2a323e;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, 
+                #f87171 0%,   /* coral red */
+                #fb923c 16%,  /* warm orange */
+                #fbbf24 32%,  /* golden yellow */
+                #84cc16 48%,  /* fresh green */
+                #60a5fa 64%,  /* sky blue */
+                #a78bfa 80%,  /* soft purple */
+                #f472b6 100%  /* rose pink */
+            );
+            background-size: 200% 100%;
+            animation: rainbowMove 4s linear infinite;
+            border-radius: 2px;
+        }
+        
+        @keyframes rainbowMove {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.7;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+        
+        .content {
+            margin-bottom: 3rem;
+        }
+        
+        .content p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            max-width: 580px;
+            opacity: 0.9;
+        }
+        
+        .content a {
+            color: #3372d7;
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 2px;
+            transition: all 0.3s ease;
+        }
+        
+        .content a:hover {
+            color: #2563eb;
+            text-decoration-thickness: 2px;
+        }
+        
+        .links {
+            margin-top: 2rem;
+        }
+        
+        .links a {
+            color: #39b1a7;
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 2px;
+            margin-right: 1.5rem;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .links a:hover {
+            color: #2563eb;
+            text-decoration-thickness: 2px;
+        }
+        
+        .footer {
+            margin-top: 3rem;
+            font-size: 0.9rem;
+            opacity: 0.6;
+        }
+        
+        /* responsive adjustments */
+        @media (max-width: 640px) {
+            .links a {
+                display: block;
+                margin-bottom: 0.5rem;
+                margin-right: 0;
+            }
+        }
+        
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>corbin aquino!</h1>
+        
+        <div class="content">
+            <p>
+                hello! recently, i noticed that my past 1-3 years have been spent largely on research for pedagogy/metalearning. i couldn't <a href="https://www.youtube.com/watch?v=UF8uR6Z6KLc">connect the dots looking forward</a> and i'm excited to see how god unfolds the plot further, but it turns out i rly rly rly dont like bad pedagogy and i rly enjoy making asymmetric bets to optimize metalearning.
+            </p>
+
+            <p>
+                it seems like it's totally possible to make learning wayyy more efficient than most people think. and it turns out many fields are largely preparadigmatic wrt metalearning, and their SOTA pedagogies have lots of nontrivial low-hanging fruit for improvement! and it seems like there's just so few people working on this problem!
+            </p>
+
+            <p>
+                specific areas im currently curious about...<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;• <a href="https://corbinn.notion.site/music-learning-research-snapshot-20e2fa0dfeb78002ab93d303c50f1ff7?source=copy_link">music learning theory</a> & second language acquisition<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;• <a href="https://www.drawright.com/before-after">"drawing on the right side of the brain"</a> but for everything<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;• how to increase wellbeing by multiple orders of magnitude; currently curious about <a href="https://www.goodreads.com/book/show/55384168-no-bad-parts">internal family systems</a> / coherence therapy, and <a href="https://corbinn.notion.site/dharma-research-snapshot-2382fa0dfeb7800aaeecd0c415202231?source=copy_link">neobuddhism</a> / christian mysticism
+            </p>
+
+            <p>
+                some other past/current interests: guitar, tennis, mandarin chinese, christian community, protestant theology, ai reasoning, <a href="https://docs.google.com/presentation/d/12R3F4EXB9yoAMQpn1F1m9YR3ryDS5abqHnT3VZVtQzM/edit?usp=sharing">contemplative studies</a>, kung fu panda trilogy, <a href="https://youtu.be/0YBWekqcAgE">bowling physics</a>, attachment theory, <a href="https://youtu.be/JioawLN0XMo">classical piano</a>, competitive programming, <a href="https://www.youtube.com/watch?v=5PEfGiFxnvg">chorus</a>, table tennis
+            </p>
+
+            <p>
+                five things that approximate the state of my brain:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;• nick cammarata's twitter account<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;• "no bad parts" by richard schwartz<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;• "drawing on the right side of the brain" by betty edwards<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;• "time for god" by jacques philippe<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;• kung fu panda trilogy<br>
+            </p>
+            
+            <p>
+                some of my favorite bible verses: 1 john 4:12, john 1:1, john 15:5, 1 cor 3:6-7, matt 11:28-30, matt 13:44, john 15:9-17, isaiah 43:1, 2 cor 5:7, prov 3:5, matt 6:33, prov 3:6, 1 john 4:19, matt 20:28, eph 2:1-10
+            </p>
+
+            <p>
+                oh also i hang out at brown studying apma cs and physics, so you can contact me at my super cool email address:<br>[firstname] [underscore] [lastname] [at] brown [dot] edu
+            </p>
+        </div>
+        
+        <div class="links">
+            <a href="https://x.com/corbindreams">twitter</a>
+            <a href="https://github.com/ubercorb77">github</a>
+            <a href="https://www.linkedin.com/in/corbinaquino/">linkedin</a>
+        </div>
+        
+        <div class="footer">
+            <p>🏡 this website was made by sending friendship rays to claude</p>
+        </div>
+    </div>
+    
+    <script>
+        // run after dom is fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('a[href^="http"]').forEach(link => {
+                link.setAttribute('target', '_blank');
+                link.setAttribute('rel', 'noopener noreferrer');
+            });
+        });
+    </script>
+</body>
+</html>
