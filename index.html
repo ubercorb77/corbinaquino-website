@@ -49,7 +49,7 @@
             position: absolute;
             bottom: -5px;
             left: 0;
-            width: 100%;
+            width: 70%;
             height: 3px;
             background: linear-gradient(90deg, 
                 #f87171 0%,   /* coral red */
@@ -210,6 +210,19 @@
             font-size: 0.75em;
         }
         
+        @keyframes highlight {
+            0% { background-color: transparent; }
+            20% { background-color: rgba(251, 191, 36, 0.3); }
+            100% { background-color: transparent; }
+        }
+        
+        .highlight-animation {
+            animation: highlight 0.7s ease-in-out;
+            border-radius: 4px;
+            padding: 2px 4px;
+            margin: -2px -4px;
+        }
+        
     </style>
 </head>
 <body>
@@ -222,27 +235,27 @@
             </p>
 
             <p>
-                it turns out it's possible to make learning wayyyy more efficient than most people think (by multiple orders of magnitude). and many fields are largely preparadigmatic wrt metalearning, and their SOTA pedagogies have lots of nontrivial low-hanging fruit! and it seems like there's so few people working on this problem! <a href="#" class="bible-verse-trigger">∗</a>
+                it turns out it's possible to make learning wayyyy more efficient than most people think (by multiple orders of magnitude). and many fields are largely preparadigmatic wrt metalearning, and their SOTA pedagogies have lots of nontrivial low-hanging fruit! and it seems like there's so few people working on this problem!<a href="#" class="bible-verse-trigger">∗</a>
             </p>
 
             <p>
-                specific areas im currently curious about...
+                specifically, i'm currently curious about...
             </p>
             <ul>
                 <li>
-                    <a href="https://corbinn.notion.site/music-learning-research-snapshot-20e2fa0dfeb78002ab93d303c50f1ff7?source=copy_link">music metalearning</a> & second language acquisition
+                    <strong>how can we get untalented beginners to reproducibly become conversationally fluent at music?</strong> (i.e. able to play by ear (mimic), improvise (speak), compose (write) at an HSK4 level)
                 </li>
                 <ul>
                     <li>
-                        i believe the SOTA theory is a generalization of DRSB by betty edwards
+                        currently working on a <a href="https://corbinn.notion.site/music-learning-research-snapshot-20e2fa0dfeb78002ab93d303c50f1ff7?source=copy_link">precise/unconfusing/rigorous generalization</a> of particular micro mental motions outlined in DRSB by betty edwards
                     </li>
                 </ul>
                 <li>
-                    how to increase wellbeing by multiple orders of magnitude (i.e. rigorous wholesome happymaxxing)
+                    <strong>how can we reproducibly improve baseline wellbeing by multiple orders of magnitude?</strong> (i.e. rigorous wholesome happymaxxing)
                 </li>
                 <ul>
                     <li>
-                        it seems like the SOTA is smth like lovingly untangling our inner world via <a href="https://www.goodreads.com/book/show/55384168-no-bad-parts">internal family systems</a> / coherence therapy, and undoing particular 10-40hz mental motions that are the cause of ~all suffering via <a href="https://corbinn.notion.site/dharma-research-snapshot-2382fa0dfeb7800aaeecd0c415202231?source=copy_link">buddhism</a> / christian mysticism <a href="#" class="bible-verse-trigger">∗∗</a>
+                        currently working on [lovingly untangling our inner world]<a href="#" class="bible-verse-trigger">∗∗</a> via [<a href="https://www.goodreads.com/book/show/55384168-no-bad-parts">internal family systems</a> / coherence therapy], and [undoing particular 10-40hz mental motions that are the cause of ~all suffering] via [<a href="https://corbinn.notion.site/dharma-research-snapshot-2382fa0dfeb7800aaeecd0c415202231?source=copy_link">meditation</a> / christian mysticism]<a href="#" class="bible-verse-trigger">∗∗∗</a>
                     </li>
                 </ul>
             </ul>
@@ -258,7 +271,7 @@
                 </button>
                 <div class="dropdown-content">
                     <p>
-                        guitar, tennis, mandarin chinese, christian community, protestant theology, ai reasoning, <a href="https://docs.google.com/presentation/d/12R3F4EXB9yoAMQpn1F1m9YR3ryDS5abqHnT3VZVtQzM/edit?usp=sharing">contemplative studies</a>, kung fu panda trilogy, <a href="https://youtu.be/0YBWekqcAgE">bowling physics</a>, attachment theory, <a href="https://youtu.be/JioawLN0XMo">classical piano</a>, competitive programming, <a href="https://www.youtube.com/watch?v=5PEfGiFxnvg">chorus</a>, table tennis
+                        guitar, tennis, mandarin chinese, christian community, protestant theology, second language acquisition theory, <a href="https://listed.to/@corbin">ai reasoning</a>, <a href="https://docs.google.com/presentation/d/12R3F4EXB9yoAMQpn1F1m9YR3ryDS5abqHnT3VZVtQzM/edit?usp=sharing">contemplative studies</a>, kung fu panda trilogy, <a href="https://youtu.be/0YBWekqcAgE">bowling physics</a>, attachment theory, <a href="https://youtu.be/JioawLN0XMo">classical piano</a>, competitive programming, <a href="https://www.youtube.com/watch?v=5PEfGiFxnvg">chorus</a>, table tennis
                     </p>
                 </div>
             </div>
@@ -266,7 +279,7 @@
 
             <div class="dropdown">
                 <button class="dropdown-trigger">
-                    <span class="dropdown-arrow">→</span>five things that approximate my ideas as of july 2025
+                    <span class="dropdown-arrow">→</span>five things that approximate my ideas as of july 2025...
                 </button>
                 <div class="dropdown-content">
                     <p>
@@ -277,11 +290,11 @@
 
             <div class="dropdown" id="bible-verse-dropdown">
                 <button class="dropdown-trigger">
-                    <span class="dropdown-arrow">→</span>some of my favorite bible verses
+                    <span class="dropdown-arrow">→</span>some of my favorite bible verses...
                 </button>
                 <div class="dropdown-content">
                     <p>
-                        1 john 4:12, john 1:1, john 15:5, 1 cor 3:6-7, matt 11:28-30, matt 13:44, john 15:9-17, isaiah 43:1, 2 cor 5:7, prov 3:5, matt 6:33, prov 3:6, 1 john 4:19, matt 20:28, eph 2:1-10, * matt 9:37, ** john 15:11
+                        1 john 4:12, john 1:1, john 15:5, 1 cor 3:6-7, matt 11:28-30, isaiah 43:1, 2 cor 5:7, prov 3:5, matt 6:33, prov 3:6, 1 john 4:19, matt 20:28, eph 2:1-10, * matt 9:37-38, ** john 15:9-11, *** matt 13:44-45
                     </p>
                 </div>
             </div>
@@ -320,11 +333,25 @@
             trigger.addEventListener('click', (e) => {
                 e.preventDefault();
                 const bibleDropdown = document.getElementById('bible-verse-dropdown');
+                
+                // Open the dropdown if it's not already open
                 if (!bibleDropdown.classList.contains('open')) {
                     bibleDropdown.classList.add('open');
                 }
+                
+                // Remove any existing highlight animation and re-add it to restart the animation
+                bibleDropdown.classList.remove('highlight-animation');
+                // Force a reflow to ensure the class removal takes effect
+                bibleDropdown.offsetHeight;
+                bibleDropdown.classList.add('highlight-animation');
+                
+                // Remove the animation class after it completes
+                setTimeout(() => {
+                    bibleDropdown.classList.remove('highlight-animation');
+                }, 700);
+                
                 // Scroll to the dropdown
-                bibleDropdown.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                bibleDropdown.scrollIntoView({ behavior: 'smooth', block: 'center' });
             });
         });
     </script>
