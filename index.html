@@ -14,7 +14,7 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background-color: #f9fafb;
-            color: #374151;
+            color: #181a1e;
             line-height: 1.6;
             min-height: 100vh;
             display: flex;
@@ -27,7 +27,6 @@
             max-width: 700px;
             width: 100%;
             text-align: left;
-            animation: fadeIn 0.8s ease-out;
         }
         
         @keyframes fadeIn {
@@ -83,10 +82,41 @@
         }
         
         .content p {
-            font-size: 1.1rem;
+            font-size: 1rem;
             margin-bottom: 1.5rem;
             max-width: 580px;
             opacity: 0.9;
+        }
+
+        .content p + ul {
+            margin-top: -1.5rem;
+        }
+
+        .content ul ul {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+        
+        .content ul {
+            list-style: none;
+            padding-left: 1rem;
+            margin: 0 0 1.5rem 0;
+        }
+        
+        .content li {
+            font-size: 1rem;
+            margin-bottom: 0;
+            max-width: 580px;
+            opacity: 0.9;
+            position: relative;
+            padding-left: 1rem;
+        }
+        
+        .content li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #374151;
         }
         
         .content a {
@@ -112,12 +142,12 @@
             text-decoration-thickness: 1px;
             text-underline-offset: 2px;
             margin-right: 1.5rem;
-            font-size: 1.1rem;
+            font-size: 1rem;
             transition: all 0.3s ease;
         }
         
         .links a:hover {
-            color: #2563eb;
+            color: #2c847d;
             text-decoration-thickness: 2px;
         }
         
@@ -127,16 +157,59 @@
             opacity: 0.6;
         }
         
-        /* responsive adjustments */
-        @media (max-width: 640px) {
-            .links a {
-                display: block;
-                margin-bottom: 0.5rem;
-                margin-right: 0;
-            }
+        .dropdown {
+            margin-bottom: 0.5rem;
+        }
+
+        .dropdown-trigger {
+            background: none;
+            border: none;
+            text-align: left;
+            padding: 0;
+            cursor: pointer;
+            font-size: 1rem;
+            color: #2a323e;
+            font-weight: normal;
+            font-family: inherit;
+        }
+
+        .dropdown-trigger:hover {
+            color: #374151;
+        }
+
+        .dropdown-arrow {
+            transition: transform 0.2s ease;
+            font-size: 0.8rem;
+            color: #374151;
+            margin-right: 0.5rem;
+        }
+
+        .dropdown.open .dropdown-arrow {
+            transform: rotate(90deg);
+        }
+
+        .dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.25s ease;
+            margin-left: 1rem;
+        }
+
+        .dropdown.open .dropdown-content {
+            max-height: 200px;
+        }
+
+        .dropdown-content p {
+            margin: 0;
+            line-height: 1.6;
+            opacity: 0.9;
         }
         
-
+        .bible-verse-trigger {
+            vertical-align: super;
+            font-size: 0.75em;
+        }
+        
     </style>
 </head>
 <body>
@@ -149,42 +222,77 @@
             </p>
 
             <p>
-                it turns out it's possible to make learning wayyyy more efficient than most people think (by multiple orders of magnitude). and many fields are largely preparadigmatic wrt metalearning, and their SOTA pedagogies have lots of nontrivial low-hanging fruit! and it seems like there's so few people working on this problem!
+                it turns out it's possible to make learning wayyyy more efficient than most people think (by multiple orders of magnitude). and many fields are largely preparadigmatic wrt metalearning, and their SOTA pedagogies have lots of nontrivial low-hanging fruit! and it seems like there's so few people working on this problem! <a href="#" class="bible-verse-trigger">∗</a>
             </p>
 
             <p>
-                specific areas im currently curious about...<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;• <a href="https://corbinn.notion.site/music-learning-research-snapshot-20e2fa0dfeb78002ab93d303c50f1ff7?source=copy_link">music learning theory</a> & second language acquisition<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;• <a href="https://www.drawright.com/before-after">"drawing on the right side of the brain"</a> but for everything<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;• how to increase wellbeing by multiple orders of magnitude; currently curious about <a href="https://www.goodreads.com/book/show/55384168-no-bad-parts">internal family systems</a> / coherence therapy, and <a href="https://corbinn.notion.site/dharma-research-snapshot-2382fa0dfeb7800aaeecd0c415202231?source=copy_link">neobuddhism</a> / christian mysticism
+                specific areas im currently curious about...
             </p>
+            <ul>
+                <li>
+                    <a href="https://corbinn.notion.site/music-learning-research-snapshot-20e2fa0dfeb78002ab93d303c50f1ff7?source=copy_link">music metalearning</a> & second language acquisition
+                </li>
+                <ul>
+                    <li>
+                        i believe the SOTA theory is a generalization of DRSB by betty edwards
+                    </li>
+                </ul>
+                <li>
+                    how to increase wellbeing by multiple orders of magnitude (i.e. rigorous wholesome happymaxxing)
+                </li>
+                <ul>
+                    <li>
+                        it seems like the SOTA is smth like lovingly untangling our inner world via <a href="https://www.goodreads.com/book/show/55384168-no-bad-parts">internal family systems</a> / coherence therapy, and undoing particular 10-40hz mental motions that are the cause of ~all suffering via <a href="https://corbinn.notion.site/dharma-research-snapshot-2382fa0dfeb7800aaeecd0c415202231?source=copy_link">buddhism</a> / christian mysticism <a href="#" class="bible-verse-trigger">∗∗</a>
+                    </li>
+                </ul>
+            </ul>
 
             <p>
-                some other past/current interests: guitar, tennis, mandarin chinese, christian community, protestant theology, ai reasoning, <a href="https://docs.google.com/presentation/d/12R3F4EXB9yoAMQpn1F1m9YR3ryDS5abqHnT3VZVtQzM/edit?usp=sharing">contemplative studies</a>, kung fu panda trilogy, <a href="https://youtu.be/0YBWekqcAgE">bowling physics</a>, attachment theory, <a href="https://youtu.be/JioawLN0XMo">classical piano</a>, competitive programming, <a href="https://www.youtube.com/watch?v=5PEfGiFxnvg">chorus</a>, table tennis
+                oh also i hang out at brown studying apma cs and <a href="https://physics.brown.edu/news/2025-04-30/exploratorium-2025">physics</a> <br>
+                [firstname] [underscore] [lastname] [at] brown [dot] edu
             </p>
 
-            <p>
-                five things that approximate my ideas as of july 2025:<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;• nick cammarata's twitter account<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;• "no bad parts" by richard schwartz<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;• "drawing on the right side of the brain" by betty edwards<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;• "time for god" by jacques philippe<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;• kung fu panda trilogy<br>
-            </p>
-            
-            <p>
-                some of my favorite bible verses: 1 john 4:12, john 1:1, john 15:5, 1 cor 3:6-7, matt 11:28-30, matt 13:44, john 15:9-17, isaiah 43:1, 2 cor 5:7, prov 3:5, matt 6:33, prov 3:6, 1 john 4:19, matt 20:28, eph 2:1-10
-            </p>
+            <div class="dropdown">
+                <button class="dropdown-trigger">
+                    <span class="dropdown-arrow">→</span>some other past n current interests...
+                </button>
+                <div class="dropdown-content">
+                    <p>
+                        guitar, tennis, mandarin chinese, christian community, protestant theology, ai reasoning, <a href="https://docs.google.com/presentation/d/12R3F4EXB9yoAMQpn1F1m9YR3ryDS5abqHnT3VZVtQzM/edit?usp=sharing">contemplative studies</a>, kung fu panda trilogy, <a href="https://youtu.be/0YBWekqcAgE">bowling physics</a>, attachment theory, <a href="https://youtu.be/JioawLN0XMo">classical piano</a>, competitive programming, <a href="https://www.youtube.com/watch?v=5PEfGiFxnvg">chorus</a>, table tennis
+                    </p>
+                </div>
+            </div>
 
-            <p>
-                oh also i hang out at brown studying apma cs and <a href="https://physics.brown.edu/news/2025-04-30/exploratorium-2025">physics</a>, so you can contact me at my super cool email address:<br>[firstname] [underscore] [lastname] [at] brown [dot] edu
-            </p>
+
+            <div class="dropdown">
+                <button class="dropdown-trigger">
+                    <span class="dropdown-arrow">→</span>five things that approximate my ideas as of july 2025
+                </button>
+                <div class="dropdown-content">
+                    <p>
+                        nick cammarata's twitter account, "no bad parts" by richard schwartz, "drawing on the right side of the brain" by betty edwards, "time for god" by jacques philippe, kung fu panda trilogy
+                    </p>
+                </div>
+            </div>
+
+            <div class="dropdown" id="bible-verse-dropdown">
+                <button class="dropdown-trigger">
+                    <span class="dropdown-arrow">→</span>some of my favorite bible verses
+                </button>
+                <div class="dropdown-content">
+                    <p>
+                        1 john 4:12, john 1:1, john 15:5, 1 cor 3:6-7, matt 11:28-30, matt 13:44, john 15:9-17, isaiah 43:1, 2 cor 5:7, prov 3:5, matt 6:33, prov 3:6, 1 john 4:19, matt 20:28, eph 2:1-10, * matt 9:37, ** john 15:11
+                    </p>
+                </div>
+            </div>
+
         </div>
         
         <div class="links">
             <a href="https://x.com/corbindreams">twitter</a>
             <a href="https://github.com/ubercorb77">github</a>
             <a href="https://www.linkedin.com/in/corbinaquino/">linkedin</a>
+            <a href="https://docs.google.com/document/d/1yAZE6HpsJo6pOuV680kAzLDfCvCh3aDtAb3kTgPjopE/edit?usp=sharing">resume</a>
         </div>
         
         <div class="footer">
@@ -197,6 +305,26 @@
             document.querySelectorAll('a[href^="http"]').forEach(link => {
                 link.setAttribute('target', '_blank');
                 link.setAttribute('rel', 'noopener noreferrer');
+            });
+        });
+
+        document.querySelectorAll('.dropdown-trigger').forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const dropdown = trigger.parentElement;
+                dropdown.classList.toggle('open');
+            });
+        });
+
+        // Add event listeners for bible verse triggers
+        document.querySelectorAll('.bible-verse-trigger').forEach(trigger => {
+            trigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                const bibleDropdown = document.getElementById('bible-verse-dropdown');
+                if (!bibleDropdown.classList.contains('open')) {
+                    bibleDropdown.classList.add('open');
+                }
+                // Scroll to the dropdown
+                bibleDropdown.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             });
         });
     </script>
