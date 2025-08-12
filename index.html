@@ -37,7 +37,7 @@
         }
         
         h1 {
-            font-size: clamp(2.5rem, 3.8vw, 4rem);
+            font-size: clamp(2.2rem, 3.8vw, 3.4rem);
             font-weight: bold;
             font-style: italic;
             color: #2a323e;
@@ -46,7 +46,7 @@
             flex-grow: 1;
             min-width: 0;
             white-space: nowrap;
-            padding-bottom: 1rem;
+            padding-bottom: 0.35em;
         }
         
         /*
@@ -295,7 +295,7 @@
                         currently working on [lovingly untangling our inner world]<a href="#" class="bible-verse-trigger">∗∗</a> via experiments with [imaginal-somatic memory reconsolidation / <a href="https://www.goodreads.com/book/show/55384168-no-bad-parts">internal family systems</a> / coherence therapy / gendlin focusing]
                     </li>
                     <li>
-                        also working on [investigating & undoing <a href="https://neuroticgradientdescent.blogspot.com/2020/01/mistranslating-buddha.html?m=0">particular 10-40hz mental motions</a> which cause ~all suffering]<a href="#" class="bible-verse-trigger">∗∗∗</a> via [<a href="https://corbinn.notion.site/dharma-research-snapshot-2382fa0dfeb7800aaeecd0c415202231?source=copy_link">meditation</a>]
+                        also working on [investigating & undoing <a href="https://neuroticgradientdescent.blogspot.com/2020/01/mistranslating-buddha.html?m=0">particular 10-40hz mental motions</a> which cause ~all suffering] via [<a href="https://corbinn.notion.site/dharma-research-snapshot-2382fa0dfeb7800aaeecd0c415202231?source=copy_link">meditation</a>]
                     </li>
                 </ul>
                 <li>
@@ -341,7 +341,7 @@
                 </button>
                 <div class="dropdown-content">
                     <p>
-                        mark 2:15-17, john 1:1, john 15:5, 1 cor 3:6-7, matt 11:28-30, isaiah 43:1, 2 cor 5:7, prov 3:5, matt 6:33, prov 3:6, 1 john 4:19, matt 20:28, john 6:37, john 8:3-11, eph 2:1-10, john 10:27-28, john 10:16, john 17:20-23, 2 cor 12:9-11, 2 cor 5:7, romans 8:1, matt 20:26-28, col 3:14, * matt 9:37-38, ** 1 john 4:12, *** matt 13:44-46
+                        mark 2:15-17, john 1:1, john 15:5, 1 cor 3:6-7, matt 11:28-30, isaiah 43:1, 2 cor 5:7, prov 3:5, matt 6:33, prov 3:6, 1 john 4:19, matt 20:28, john 6:37, john 8:3-11, eph 2:1-10, john 10:27-28, john 10:16, john 17:20-23, 2 cor 12:9-11, 2 cor 5:7, romans 8:1, matt 20:26-28, col 3:14, * matt 9:37-38, ** 1 john 4:12, matt 13:44-46
                     </p>
                 </div>
             </div>
@@ -412,9 +412,12 @@
 
         function updateCanvasSize() {
             const h1Height = h1.offsetHeight;
-            canvas.style.width = h1Height + 'px';
-            canvas.style.height = h1Height + 'px';
-            const scale = Math.max(1, Math.floor(h1Height / 80));
+            const minSize = 70;
+            const cubeSize = Math.max(minSize, h1Height);
+            
+            canvas.style.width = cubeSize + 'px';
+            canvas.style.height = cubeSize + 'px';
+            const scale = Math.max(1, Math.floor(cubeSize / 80));
             canvasSize = 20 * scale;
             canvas.width = canvasSize;
             canvas.height = canvasSize;
