@@ -24,24 +24,29 @@
         }
         
         .container {
-            max-width: 700px;
+            max-width: 580px;
             width: 100%;
             text-align: left;
         }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: nowrap;
         }
         
         h1 {
             font-size: clamp(2.5rem, 3.8vw, 4rem);
             font-weight: bold;
             font-style: italic;
-            margin-bottom: 1rem;
             color: #2a323e;
             position: relative;
             display: inline-block;
+            flex-grow: 1;
+            min-width: 0;
+            white-space: nowrap;
+            padding-bottom: 1rem;
         }
         
         /*
@@ -86,7 +91,6 @@
         .content p {
             font-size: 1rem;
             margin-bottom: 1.5rem;
-            max-width: 580px;
             opacity: 0.9;
         }
 
@@ -108,7 +112,6 @@
         .content li {
             font-size: 1rem;
             margin-bottom: 0;
-            max-width: 580px;
             opacity: 0.9;
             position: relative;
             padding-left: 1rem;
@@ -238,6 +241,7 @@
             image-rendering: pixelated;
             image-rendering: -moz-crisp-edges;
             image-rendering: crisp-edges;
+            flex-shrink: 0;
         }
 
         .footer {
@@ -264,7 +268,11 @@
 </head>
 <body>
     <div class="container">
-        <h1>corbin aquino!</h1>
+        <div class="header">
+            <h1 id="mainTitle">corbin aquino!</h1>
+            <canvas id="cubeCanvas" width="20" height="20"></canvas>
+        </div>
+
         
         <div class="content">
             <p>
@@ -349,7 +357,6 @@
         
         <div class="footer">
             <p>🏡 this website was made by sending friendship rays to claude</p>
-            <canvas id="cubeCanvas" width="20" height="20" style="width: 80px; height: 80px;"></canvas>
         </div>
     </div>
     
@@ -399,7 +406,31 @@
     <script>
         const canvas = document.getElementById('cubeCanvas');
         const ctx = canvas.getContext('2d');
-        const size = 20;
+
+        const h1 = document.getElementById('mainTitle');
+        let canvasSize = 20;
+
+        function updateCanvasSize() {
+            const h1Height = h1.offsetHeight;
+            canvas.style.width = h1Height + 'px';
+            canvas.style.height = h1Height + 'px';
+            const scale = Math.max(1, Math.floor(h1Height / 80));
+            canvasSize = 20 * scale;
+            canvas.width = canvasSize;
+            canvas.height = canvasSize;
+        }
+
+        let resizeTimeout;
+        const resizeObserver = new ResizeObserver(() => {
+            if (resizeTimeout) {
+                cancelAnimationFrame(resizeTimeout);
+            }
+            resizeTimeout = requestAnimationFrame(() => {
+                updateCanvasSize();
+            });
+        });
+
+        resizeObserver.observe(h1);
         
         // cube vertices in 3d space
         const vertices = [
@@ -458,8 +489,8 @@
             const [x, y, z] = point;
             const scale = distance / (distance + z);
             return [
-                (x * scale * 0.5 + 1) * size / 2,
-                (y * scale * 0.5 + 1) * size / 2,
+                (x * scale * 0.5 + 1) * canvasSize / 2,
+                (y * scale * 0.5 + 1) * canvasSize / 2,
                 z
             ];
         }
@@ -481,7 +512,7 @@
             let pixelCount = 0;
             
             while (true) {
-                if (x >= 0 && x < size && y >= 0 && y < size) {
+                if (x >= 0 && x < canvasSize && y >= 0 && y < canvasSize) {
                     // rainbow gradient calculation
                     const progress = pixelCount / Math.max(dx, dy, 1);
                     const hue = ((time * 2 + edgeIndex * 30 + progress * 360) % 360) / 360;
@@ -556,7 +587,7 @@
         }
         
         function animate() {
-            ctx.clearRect(0, 0, size, size);
+            ctx.clearRect(0, 0, canvasSize, canvasSize);
             
             // rotate the cube
             const rotatedVertices = vertices.map(vertex => 
@@ -598,7 +629,7 @@
                     const x1 = Math.floor(end[0]);
                     const y1 = Math.floor(end[1]);
                     
-                    if (x0 >= 0 && x0 < size && y0 >= 0 && y0 < size) {
+                    if (x0 >= 0 && x0 < canvasSize && y0 >= 0 && y0 < canvasSize) {
                         ctx.fillRect(x0, y0, 1, 1);
                     }
                 }
@@ -622,6 +653,7 @@
             requestAnimationFrame(animate);
         }
         
+        updateCanvasSize();
         animate();
     </script>
 
