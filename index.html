@@ -3,671 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>corbin aquino</title>
+    <title>corbin aquino!</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        body, #name {
+            font-family: "Palatino", "Palatino Linotype", "Book Antiqua", serif;
         }
-        
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background-color: #f9fafb;
-            color: #181a1e;
-            line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        
-        .container {
-            max-width: 580px;
-            width: 100%;
-            text-align: left;
+            margin: 40px;
+            max-width: 600px;
+            line-height: 1.5em;
         }
 
-        .header {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            flex-wrap: nowrap;
+        #cat {
+            font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica Neue, Arial, sans-serif;
+            line-height: 1.25em;
         }
-        
-        h1 {
-            font-size: clamp(2.2rem, 3.8vw, 3.4rem);
-            font-weight: bold;
-            font-style: italic;
-            color: #2a323e;
-            position: relative;
-            display: inline-block;
-            flex-grow: 1;
-            min-width: 0;
-            white-space: nowrap;
-            padding-bottom: 0.35em;
-        }
-        
-        /*
-        h1::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 70%;
-            height: 3px;
-            background: linear-gradient(90deg, 
-                #f87171 0%,
-                #fb923c 16%,
-                #fbbf24 32%,
-                #84cc16 48%,
-                #60a5fa 64%,
-                #a78bfa 80%,
-                #f472b6 100%
-            );
-            background-size: 200% 100%;
-            animation: rainbowMove 4s linear infinite;
-            border-radius: 2px;
-        }
-            */
-        
-        @keyframes rainbowMove {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-        }
-        
-        .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.7;
-            margin-bottom: 2rem;
+
+        .quote {
             font-style: italic;
         }
-        
-        .content {
-            margin-bottom: 3rem;
-        }
-        
-        .content p {
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
-            opacity: 0.9;
-        }
-
-        .content p + ul {
-            margin-top: -1.5rem;
-            padding-left: 0.5rem;
-        }
-
-        .content ul ul {
-            margin-top: 0;
-            margin-bottom: 0;
-        }
-        
-        .content ul {
-            list-style: none;
-            padding-left: 1.2rem;
-            margin: 0 0 1.5rem 0;
-        }
-        
-        .content li {
-            font-size: 1rem;
-            margin-bottom: 0;
-            opacity: 0.9;
-            position: relative;
-            padding-left: 0.75rem;
-        }
-        
-        .content li::before {
-            content: '•';
-            position: absolute;
-            left: 0;
-            color: #181a1e;
-        }
-        
-        .content a {
-            color: #2162c9;
-            text-decoration: none;
-            text-decoration-thickness: 1px;
-            text-underline-offset: 2px;
-        }
-        
-        .content a:hover {
-            color: #2563eb;
-            text-decoration-thickness: 2px;
-            text-decoration: underline;
-        }
-
-        /* keep underlines for links in the bible verse dropdown */
-        #bible-verse-dropdown .dropdown-content a {
-            text-decoration: underline;
-            text-decoration-thickness: 1px;
-            text-underline-offset: 2px;
-        }
-        
-        #bible-verse-dropdown .dropdown-content a:hover {
-            text-decoration: underline;
-            text-decoration-thickness: 2px;
-        }
-        
-        .links {
-            margin-top: 2rem;
-        }
-        
-        .links a {
-            color: #39b1a7;
-            text-decoration: underline;
-            text-decoration-thickness: 1px;
-            text-underline-offset: 2px;
-            margin-right: 1.5rem;
-            font-size: 1rem;
-        }
-        
-        .links a:hover {
-            color: #2c847d;
-            text-decoration-thickness: 2px;
-        }
-        
-        .dropdown {
-            margin-bottom: 0.5rem;
-        }
-
-        .dropdown-trigger {
-            background: none;
-            border: none;
-            text-align: left;
-            padding: 0;
-            cursor: pointer;
-            font-size: 1rem;
-            color: #2a323e;
-            font-weight: normal;
-            font-family: inherit;
-        }
-
-        .dropdown-trigger:hover {
-            color: #374151;
-        }
-
-        .dropdown-arrow {
-            transition: transform 0.2s ease;
-            font-size: 0.8rem;
-            color: #374151;
-            margin-right: 0.5rem;
-        }
-
-        .dropdown.open .dropdown-arrow {
-            transform: rotate(90deg);
-        }
-
-        .dropdown-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.25s ease;
-            margin-left: 1rem;
-        }
-
-        .dropdown.open .dropdown-content {
-            max-height: 200px;
-        }
-
-        .dropdown-content p {
-            margin: 0;
-            line-height: 1.6;
-            opacity: 0.9;
-        }
-        
-        .bible-verse-trigger {
-            vertical-align: super;
-            font-size: 0.75em;
-        }
-        
-        @keyframes highlight {
-            0% { background-color: transparent; }
-            20% { background-color: rgba(251, 191, 36, 0.3); }
-            100% { background-color: transparent; }
-        }
-        
-        .highlight-animation {
-            animation: highlight 0.9s ease-in-out;
-            border-radius: 4px;
-            padding: 2px 4px;
-            margin: -2px -4px;
-        }
-
-        a.esv-crossref-link {
-            color: inherit !important;
-        }
-
-        #cubeCanvas {
-            image-rendering: pixelated;
-            image-rendering: -moz-crisp-edges;
-            image-rendering: crisp-edges;
-            flex-shrink: 0;
-        }
-
-        .footer {
-            margin-top: 3rem;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .footer p {
-            opacity: 0.6;
-            margin: 0;
-        }
-
-        #cubeCanvas {
-            image-rendering: pixelated;
-            image-rendering: -moz-crisp-edges;
-            image-rendering: crisp-edges;
-            flex-shrink: 0;
-        }
-        
     </style>
+    <script type="text/javascript" 
+    src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
+    <script>
+      var bgm = new Howl({
+        src: ['nicopattymenu.mp3'],
+        loop: true,
+        volume: 0,
+      });
+      bgm.play();
+      bgm.fade(0, 0.5, 4000);
+    </script>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1 id="mainTitle">corbin aquino!</h1>
-            <canvas id="cubeCanvas" width="20" height="20"></canvas>
-        </div>
+    <h1 id="cat">  ╱|、&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="name">corbin aquino!</span> <br>
+(°. ｡ 7
+<br>
+  |、 ~ヽ
+  <br>
+  じしf_,)ノ</h1>
 
-        
-        <div class="content">
-            <p>
-                hello! i really like good, anti-confusing ideas.
-            </p>
+    <p><span class="quote">"Have you ever experienced a moment of bliss? On the rapids of inspiration maybe, your mind tracing the shapes of truth and beauty? Or in the pulsing ecstasy of love? Or in a glorious triumph achieved with true friends? Or in a conversation on a vine-overhung terrace one star-appointed night? Or perhaps a melody smuggled itself into your heart, charming it and setting it alight with kaleidoscopic emotions? Or when you prayed, and felt heard?"</span><br>- nick bostrom, utopia sci-fi letter</p>
 
-            <p>
-                it turns out it's possible to make learning wayyyy more efficient than most people think, by multiple orders of magnitude!! and many fields are largely preparadigmatic wrt metalearning, and their SOTA pedagogies have lots of nontrivial low-hanging fruit! and it seems like there's so few people working on this problem!<a href="#" class="bible-verse-trigger">∗</a>
-            </p>
+    <p><span class="quote">"The woodpile is so beautiful, about all the joy and beauty that I can stand. I am afraid to turn around and face the mountains, for fear they will overpower me. But I did look, and I am astounded. Everyone must get to experience a profound state like this. I feel totally peaceful. I have lived all my life to get here, and I feel I have come home. I am complete."</span><br>- robert shulgin, mdma journal</p>
 
-            <p>
-                specifically, i'm currently curious about...
-            </p>
-            <ul>
-                <li>
-                    <strong>how can we reproducibly improve baseline wellbeing by many orders of magnitude?</strong> (i.e. rigorous wholesome happymaxxing)
-                </li>
-                <ul>
-                    <li>
-                        working on [investigating & undoing <a href="https://neuroticgradientdescent.blogspot.com/2020/01/mistranslating-buddha.html?m=0">particular 10-40hz mental motions</a> which cause ~all suffering] via [<a href="https://x.com/nickcammarata/status/1755783001831833603">meditation</a>]
-                    </li>
-                    <ul>
-                        <li>
-                            i'm trying to write a <a href="https://happymaxxing.com">sufficiently anticonfusing primer</a> on this stuff
-                        </li>
-                        <li>
-                            but can we accelerate this 10-10000x with science/tech? reading up on some <a href="https://qri.org/blog/symmetry-theory-of-valence-2020">cool</a> <a href="https://opentheory.net/2023/07/principles-of-vasocomputation-a-unification-of-buddhist-phenomenology-active-inference-and-physical-reflex-part-i/">theories</a>
-                        </li>
-                    </ul>
-                    <li>
-                        also, [lovingly untangling our inner world]<a href="#" class="bible-verse-trigger">∗∗</a> via experiments with [imaginal-somatic memory reconsolidation / <a href="https://www.goodreads.com/book/show/55384168-no-bad-parts">internal family systems</a> / coherence therapy / gendlin focusing]
-                    </li>
-                </ul>
-                <li>
-                    <strong>how can we get untalented beginners to reproducibly become conversationally fluent at music?</strong> (i.e. able to play by ear (mimic), improvise (speak), compose (write) at an HSK4 level)
-                </li>
-                <ul>
-                    <li>
-                        currently working on a <a href="https://corbinn.notion.site/music-learning-research-snapshot-20e2fa0dfeb78002ab93d303c50f1ff7?source=copy_link">precise/unconfusing/rigorous generalization</a> of particular micro mental motions outlined in DRSB by betty edwards
-                    </li>
-                </ul>
-            </ul>
+    <hr>
 
-            <p>
-                oh also i hang out at brown studying <a href="https://www.youtube.com/watch?v=Fc9cXgnnKtE">apma cs</a> and <a href="https://physics.brown.edu/news/2025-04-30/exploratorium-2025#:~:text=undergraduate%20concentrators%C2%A0Regan%20Doherty%2C%20Corbin%20Aquino%2C%20and%20Darren%20Duan">physics</a> <br>
-                [firstname] [underscore] [lastname] [at] brown [dot] edu
-            </p>
+    <p>it turns out it's possible to feel like this all the time. not just for a moment, but as our baseline.</p>
 
-            <div class="dropdown">
-                <button class="dropdown-trigger">
-                    <span class="dropdown-arrow">→</span>some other past n current adventures...
-                </button>
-                <div class="dropdown-content">
-                    <p>
-                        <a href="https://tweetsapp-5iqic.ondigitalocean.app/">tweet semantic search</a>, guitar, tennis, chinese, christian community, protestant theology, second language acquisition theory, <a href="https://listed.to/@corbin">ai reasoning</a>, <a href="https://docs.google.com/presentation/d/12R3F4EXB9yoAMQpn1F1m9YR3ryDS5abqHnT3VZVtQzM/edit?usp=sharing">contemplative studies</a>, kung fu panda trilogy mythology, <a href="https://www.youtube.com/watch?v=-GOgF9dBi2E">bowling</a>, <a href="https://youtu.be/0YBWekqcAgE">bowling science things</a>, attachment theory, <a href="https://youtu.be/JioawLN0XMo">classical piano</a>, competitive programming, <a href="https://www.youtube.com/watch?v=5PEfGiFxnvg">chorus</a>, table tennis
-                    </p>
-                </div>
-            </div>
+    <p>it turns out humans can improve baseline wellbeing by crazy orders of magnitude, by investigating and undoing particular 10-40hz tensing events which are the correlate of all suffering.</p>
 
-            <div class="dropdown">
-                <button class="dropdown-trigger">
-                    <span class="dropdown-arrow">→</span>five things that approximate my ideas as of july 2025...
-                </button>
-                <div class="dropdown-content">
-                    <p>
-                        nick cammarata's twitter account, "no bad parts" by richard schwartz, "drawing on the right side of the brain" by betty edwards, "time for god" by jacques philippe, kung fu panda trilogy
-                    </p>
-                </div>
-            </div>
+    <p>but it's not super simple, and statistically takes a few thousand hours, and it's hidden by lots of terrible pedagogy and fuzzy theory and weird poems and antihelpful translation.</p>
 
-            <div class="dropdown" id="bible-verse-dropdown">
-                <button class="dropdown-trigger">
-                    <span class="dropdown-arrow">→</span>some of my favorite bible verses...
-                </button>
-                <div class="dropdown-content">
-                    <p>
-                        mark 2:15-17, john 1:1, john 15:5, 1 cor 3:6-7, matt 11:28-30, isaiah 43:1, 2 cor 5:7, prov 3:5, matt 6:33, prov 3:6, 1 john 4:19, matt 20:28, john 6:37, john 8:3-11, eph 2:1-10, john 10:27-28, john 10:16, john 17:20-23, 2 cor 12:9-11, 2 cor 5:7, romans 8:1, matt 20:26-28, col 3:14, * matt 9:37-38, ** 1 john 4:12, matt 13:44-46
-                    </p>
-                </div>
-            </div>
+    <p>i want to help fix that! and i love yapping about it! i think this is the most important unsolved-ish problem of our time, and it's also just my version of composing an EDM album :) i think there's almost zero resources that legibly talk about this stuff, so i'm writing one currently. hopefully it's done by the end of 2025.</p>
 
-        </div>
-        
-        <div class="links">
-            <a href="https://x.com/corbindreams">twitter</a>
-            <a href="https://github.com/ubercorb77">github</a>
-        </div>
-        
-        <div class="footer">
-            <p>🏡 this website was made by sending friendship rays to claude</p>
-        </div>
-    </div>
+    <hr>
+
+    <p>other things:</p>
     
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('a[href^="http"]').forEach(link => {
-                link.setAttribute('target', '_blank');
-                link.setAttribute('rel', 'noopener noreferrer');
-            });
-        });
+    <p>i believe wholesomemaxxing = happymaxxing = lovemaxxing (asymptotically, stochastically), and it seems like the hardcoded telos (purpose) and Logos (organizing principle) of life is to engage in that drama!? -- i.e. frolick around the SGD latent space towards the schelling-point-attractor-basin of love</p>
 
-        document.querySelectorAll('.dropdown-trigger').forEach(trigger => {
-            trigger.addEventListener('click', () => {
-                const dropdown = trigger.parentElement;
-                dropdown.classList.toggle('open');
-            });
-        });
-
-        // Add event listeners for bible verse triggers
-        document.querySelectorAll('.bible-verse-trigger').forEach(trigger => {
-            trigger.addEventListener('click', (e) => {
-                e.preventDefault();
-                const bibleDropdown = document.getElementById('bible-verse-dropdown');
-                
-                // Open the dropdown if it's not already open
-                if (!bibleDropdown.classList.contains('open')) {
-                    bibleDropdown.classList.add('open');
-                }
-                
-                // Remove any existing highlight animation and re-add it to restart the animation
-                bibleDropdown.classList.remove('highlight-animation');
-                // Force a reflow to ensure the class removal takes effect
-                bibleDropdown.offsetHeight;
-                bibleDropdown.classList.add('highlight-animation');
-                
-                // Remove the animation class after it completes
-                setTimeout(() => {
-                    bibleDropdown.classList.remove('highlight-animation');
-                }, 900);
-                
-                // Scroll to the dropdown
-                bibleDropdown.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            });
-        });
-    </script>
+    <p>my favorite mythologies are kung fu panda and the jesus story. i'm very inspired by EDM artists like dabin, and improv pianists like jon michael ogletree. my research heroes are nick cammarata and michael edward johnson.</p>
+        
+    <p>feel free to reach out on twitter (@corbindreams) or email me (firstname underscore lastname at brown dot edu)</p>
+    
+    <p>thanks for stopping by ^_^</p>
 
     <script>
-        const canvas = document.getElementById('cubeCanvas');
-        const ctx = canvas.getContext('2d');
-
-        const h1 = document.getElementById('mainTitle');
-        let canvasSize = 20;
-
-        function updateCanvasSize() {
-            const h1Height = h1.offsetHeight;
-            const minSize = 70;
-            const cubeSize = Math.max(minSize, h1Height);
-            
-            canvas.style.width = cubeSize + 'px';
-            canvas.style.height = cubeSize + 'px';
-            const scale = Math.max(1, Math.floor(cubeSize / 80));
-            canvasSize = 20 * scale;
-            canvas.width = canvasSize;
-            canvas.height = canvasSize;
-        }
-
-        let resizeTimeout;
-        const resizeObserver = new ResizeObserver(() => {
-            if (resizeTimeout) {
-                cancelAnimationFrame(resizeTimeout);
-            }
-            resizeTimeout = requestAnimationFrame(() => {
-                updateCanvasSize();
-            });
+        // make external links secure
+        document.querySelectorAll('a[href^="http"]').forEach(link => {
+            link.setAttribute('rel', 'noopener noreferrer');
+            link.setAttribute('target', '_blank');
         });
-
-        resizeObserver.observe(h1);
-        
-        // cube vertices in 3d space
-        const vertices = [
-            [-1, -1, -1], [1, -1, -1], [1, 1, -1], [-1, 1, -1], // back face
-            [-1, -1, 1], [1, -1, 1], [1, 1, 1], [-1, 1, 1]      // front face
-        ];
-        
-        // cube edges (connecting vertices)
-        const edges = [
-            [0, 1], [1, 2], [2, 3], [3, 0], // back face
-            [4, 5], [5, 6], [6, 7], [7, 4], // front face
-            [0, 4], [1, 5], [2, 6], [3, 7]  // connecting edges
-        ];
-        
-        // faces for shading (vertex indices)
-        const faces = [
-            [0, 1, 2, 3], // back
-            [4, 7, 6, 5], // front
-            [0, 4, 7, 3], // left
-            [1, 5, 6, 2], // right
-            [3, 7, 6, 2], // top
-            [0, 1, 5, 4]  // bottom
-        ];
-        
-        let angleX = 0;
-        let angleY = 0;
-        let angleZ = 0;
-        let time = 0;
-        
-        function rotatePoint(point, ax, ay, az) {
-            let [x, y, z] = point;
-            
-            // rotate around x axis
-            let cosX = Math.cos(ax);
-            let sinX = Math.sin(ax);
-            let y1 = y * cosX - z * sinX;
-            let z1 = y * sinX + z * cosX;
-            
-            // rotate around y axis
-            let cosY = Math.cos(ay);
-            let sinY = Math.sin(ay);
-            let x2 = x * cosY + z1 * sinY;
-            let z2 = -x * sinY + z1 * cosY;
-            
-            // rotate around z axis
-            let cosZ = Math.cos(az);
-            let sinZ = Math.sin(az);
-            let x3 = x2 * cosZ - y1 * sinZ;
-            let y3 = x2 * sinZ + y1 * cosZ;
-            
-            return [x3, y3, z2];
-        }
-        
-        function projectTo2D(point) {
-            const distance = 8;
-            const [x, y, z] = point;
-            const scale = distance / (distance + z);
-            return [
-                (x * scale * 0.5 + 1) * canvasSize / 2,
-                (y * scale * 0.5 + 1) * canvasSize / 2,
-                z
-            ];
-        }
-        
-        function drawPixelLine(x0, y0, x1, y1, brightness, edgeIndex) {
-            x0 = Math.floor(x0);
-            y0 = Math.floor(y0);
-            x1 = Math.floor(x1);
-            y1 = Math.floor(y1);
-            
-            const dx = Math.abs(x1 - x0);
-            const dy = Math.abs(y1 - y0);
-            const sx = x0 < x1 ? 1 : -1;
-            const sy = y0 < y1 ? 1 : -1;
-            let err = dx - dy;
-            
-            let x = x0;
-            let y = y0;
-            let pixelCount = 0;
-            
-            while (true) {
-                if (x >= 0 && x < canvasSize && y >= 0 && y < canvasSize) {
-                    // rainbow gradient calculation
-                    const progress = pixelCount / Math.max(dx, dy, 1);
-                    const hue = ((time * 2 + edgeIndex * 30 + progress * 360) % 360) / 360;
-                    
-                    // convert hue to rgb
-                    const c = brightness * 0.8;
-                    const x_val = c * (1 - Math.abs((hue * 6) % 2 - 1));
-                    const m = brightness * 0.4;
-                    
-                    let r, g, b;
-                    if (hue < 1/6) { r = c; g = x_val; b = 0; }
-                    else if (hue < 2/6) { r = x_val; g = c; b = 0; }
-                    else if (hue < 3/6) { r = 0; g = c; b = x_val; }
-                    else if (hue < 4/6) { r = 0; g = x_val; b = c; }
-                    else if (hue < 5/6) { r = x_val; g = 0; b = c; }
-                    else { r = c; g = 0; b = x_val; }
-                    
-                    r = Math.floor((r + m) * 255);
-                    g = Math.floor((g + m) * 255);
-                    b = Math.floor((b + m) * 255);
-                    
-                    const alpha = brightness * 0.9;
-                    const color = `rgba(${r}, ${g}, ${b}, ${alpha})`;
-                    
-                    ctx.fillStyle = color;
-                    ctx.fillRect(x, y, 1, 1);
-                }
-                
-                if (x === x1 && y === y1) break;
-                
-                const e2 = 2 * err;
-                if (e2 > -dy) {
-                    err -= dy;
-                    x += sx;
-                }
-                if (e2 < dx) {
-                    err += dx;
-                    y += sy;
-                }
-                pixelCount++;
-            }
-        }
-        
-        function getFaceBrightness(face, rotatedVertices) {
-            // calculate face normal for lighting
-            const v0 = rotatedVertices[face[0]];
-            const v1 = rotatedVertices[face[1]];
-            const v2 = rotatedVertices[face[2]];
-            
-            const edge1 = [v1[0] - v0[0], v1[1] - v0[1], v1[2] - v0[2]];
-            const edge2 = [v2[0] - v0[0], v2[1] - v0[1], v2[2] - v0[2]];
-            
-            // cross product for normal
-            const normal = [
-                edge1[1] * edge2[2] - edge1[2] * edge2[1],
-                edge1[2] * edge2[0] - edge1[0] * edge2[2],
-                edge1[0] * edge2[1] - edge1[1] * edge2[0]
-            ];
-            
-            // normalize
-            const length = Math.sqrt(normal[0] * normal[0] + normal[1] * normal[1] + normal[2] * normal[2]);
-            if (length > 0) {
-                normal[0] /= length;
-                normal[1] /= length;
-                normal[2] /= length;
-            }
-            
-            // simple lighting calculation
-            const lightDir = [0.5, 0.5, 1];
-            const dot = normal[0] * lightDir[0] + normal[1] * lightDir[1] + normal[2] * lightDir[2];
-            return Math.max(0.2, Math.abs(dot));
-        }
-        
-        function animate() {
-            ctx.clearRect(0, 0, canvasSize, canvasSize);
-            
-            // rotate the cube
-            const rotatedVertices = vertices.map(vertex => 
-                rotatePoint(vertex, angleX, angleY, angleZ)
-            );
-            
-            // project to 2d
-            const projectedVertices = rotatedVertices.map(vertex => 
-                projectTo2D(vertex)
-            );
-            
-            // sort faces by average z depth for proper rendering order
-            const facesWithDepth = faces.map((face, index) => {
-                const avgZ = face.reduce((sum, vertexIndex) => 
-                    sum + projectedVertices[vertexIndex][2], 0) / face.length;
-                return { face, avgZ, index };
-            });
-            
-            facesWithDepth.sort((a, b) => a.avgZ - b.avgZ);
-            
-            // draw faces (filled with muted colors)
-            facesWithDepth.forEach(({ face }) => {
-                const brightness = getFaceBrightness(face, rotatedVertices);
-                const gray = Math.floor(brightness * 60);
-                const alpha = brightness * 0.3;
-                ctx.fillStyle = `rgba(${gray}, ${gray}, ${gray}, ${alpha})`;
-                
-                // draw face outline with subtle gray
-                for (let i = 0; i < face.length; i++) {
-                    const start = projectedVertices[face[i]];
-                    const end = projectedVertices[face[(i + 1) % face.length]];
-                    const faceGray = Math.floor(brightness * 80);
-                    const faceAlpha = brightness * 0.4;
-                    ctx.fillStyle = `rgba(${faceGray}, ${faceGray}, ${faceGray}, ${faceAlpha})`;
-                    
-                    // simple face line without rainbow
-                    const x0 = Math.floor(start[0]);
-                    const y0 = Math.floor(start[1]);
-                    const x1 = Math.floor(end[0]);
-                    const y1 = Math.floor(end[1]);
-                    
-                    if (x0 >= 0 && x0 < canvasSize && y0 >= 0 && y0 < canvasSize) {
-                        ctx.fillRect(x0, y0, 1, 1);
-                    }
-                }
-            });
-            
-            // draw rainbow edges for wireframe effect
-            edges.forEach((edge, edgeIndex) => {
-                const start = projectedVertices[edge[0]];
-                const end = projectedVertices[edge[1]];
-                const avgZ = (start[2] + end[2]) / 2;
-                const brightness = Math.max(0.77, 1 - (avgZ + 2) / 4);
-                drawPixelLine(start[0], start[1], end[0], end[1], brightness, edgeIndex);
-            });
-            
-            // increment rotation angles and time
-            angleX += 0.01;
-            angleY += 0.012;
-            angleZ += 0.008;
-            time += 1;
-            
-            requestAnimationFrame(animate);
-        }
-        
-        updateCanvasSize();
-        animate();
     </script>
-
-    <script src="https://static.esvmedia.org/crossref/crossref.min.js" type="text/javascript"></script>
-    
 </body>
 </html>
