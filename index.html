@@ -5,15 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>corbin aquino!</title>
     <style>
-        body, #name, .cat-links {
-            font-family: "Palatino", "Palatino Linotype", "Book Antiqua", serif;
+        :root {
+            --font-family: "Palatino", "Palatino Linotype", "Book Antiqua", serif;
         }
 
+
         body {
+            font-family: var(--font-family);
             padding: 20px;
             margin: 40px auto;
             max-width: 600px;
             line-height: 1.5em;
+        }
+
+        #name, .cat-links {
+            font-family: var(--font-family);
+            line-height: 1;
         }
 
         #name {
@@ -51,13 +58,14 @@
     </script>
 </head>
 <body>
-    <h1 id="cat">
+
+<h1 id="cat">
 ╱|、&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="name">corbin aquino!</span> <br>
-(°. ｡ 7
+(°. ｡ 7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cat-links">[ <a href="https://x.com/corbindreams">twitter</a> ] [ <a href="mailto:corbin_aquino@brown.edu">email</a> ]</span>
 <br>
 |、 ~ヽ
 <br>
-じしf_,)ノ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cat-links">[ <a href="https://x.com/corbindreams">twitter</a> ] [ <a href="mailto:corbin_aquino@brown.edu">email</a> ]</span>
+じしf_,)ノ
 </h1>
 
     <p><span class="quote">"Have you ever experienced a moment of bliss? On the rapids of inspiration maybe, your mind tracing the shapes of truth and beauty? Or in the pulsing ecstasy of love? Or in a glorious triumph achieved with true friends? Or in a conversation on a vine-overhung terrace one star-appointed night? Or perhaps a melody smuggled itself into your heart, charming it and setting it alight with kaleidoscopic emotions? Or when you prayed, and felt heard?"</span><br>- nick bostrom, utopia sci-fi letter</p>
