@@ -3,110 +3,524 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>corbin aquino!</title>
+    <title>corbin aquino</title>
     <style>
-        :root {
-            --font-family: "Palatino", "Palatino Linotype", "Book Antiqua", serif;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-
-
+        
         body {
-            font-family: var(--font-family);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #f9fafb;
+            color: #181a1e;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             padding: 20px;
-            margin: 40px auto;
-            max-width: 600px;
-            line-height: 1.5em;
         }
-
-        #name, .cat-links {
-            font-family: var(--font-family);
-            line-height: 1;
+        
+        .container {
+            max-width: 580px;
+            width: 100%;
         }
-
-        #name {
-            font-size: 0.8em;
+        
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: nowrap;
         }
-
-        .cat-links {
-            font-size: 0.5em;
-            font-weight: normal;
+        
+        .h1-wrapper {
+            flex-grow: 1;
+            min-width: 0;
         }
-
-        #cat {
-            font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica Neue, Arial, sans-serif;
-            line-height: 1.25em;
-        }
-
-        .quote {
+        
+        h1 {
+            font-size: clamp(2.5rem, 3.8vw, 4rem);
+            font-weight: bold;
             font-style: italic;
+            color: #2a323e;
+            white-space: nowrap;
+        }
+        
+        #cubeCanvas {
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+            flex-shrink: 0;
+            border-radius: 4px;
+        }
+        
+        .content {
+            font-size: 1rem;
+            opacity: 0.9;
+            line-height: 1.6;
+            position: relative;
         }
 
-        a {
-            color: #000000;
+        .content p {
+            margin-bottom: 1em;
         }
+
+        .content hr {
+            border: none;
+            border-top: 1px solid #ccc;
+            margin: 1.5em 0;
+        }
+
+        .content ul {
+            margin-left: 1.5em;
+            margin-bottom: 1em;
+        }
+
+        .content ul ul {
+            margin-bottom: 0;
+        }
+
+        .content li {
+            margin-bottom: 1em;
+        }
+
+        .content li:last-child {
+            margin-bottom: 0;
+        }
+
+        .content a {
+            color: inherit;
+        }
+
+        .text-links a {
+            color: #2a323e;
+            margin-right: 1rem;
+        }
+
+        .text-links a::before { content: "["; }
+        .text-links a::after { content: "]"; }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+            margin-bottom: 1em;
+        }
+
+        .photo-grid img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .sidenote-ref {
+            font-size: 0.8em;
+            vertical-align: super;
+            color: #6a7a8a;
+            cursor: pointer;
+            margin-left: -0.2em;
+            margin-right: -0.2em;
+            padding: 0.1em 0.3em;
+            border-radius: 2px;
+            transition: background-color 0.2s;
+        }
+
+        .sidenote {
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: #666;
+            padding: 0.5rem;
+            margin: 0;
+            border-radius: 3px;
+            transition: background-color 0.2s;
+        }
+
+        .sidenote-p {
+            display: block;
+            margin-bottom: 1em;
+        }
+
+        .sidenote-p:last-child {
+            margin-bottom: 0;
+        }
+
+        .sidenote-wrapper:hover .sidenote-ref {
+            background-color: rgba(106, 122, 138, 0.15);
+        }
+
+        .sidenote-wrapper:hover .sidenote {
+            background-color: rgba(0, 0, 0, 0.04);
+        }
+
+        /* Desktop: sidenotes in right margin */
+        @media (min-width: 960px) {
+            .container {
+                transform: translateX(-150px);
+            }
+
+            .sidenote {
+                float: right;
+                clear: right;
+                margin-right: -300px;
+                width: 280px;
+                margin-top: -0.5rem;
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        /* Mobile/narrow: sidenotes inline */
+        @media (max-width: 959px) {
+            .sidenote {
+                display: block;
+                margin: 0.75em 0;
+                padding: 0.75rem 0 0.75rem 1rem;
+                border-left: 3px solid #ddd;
+                background: #f5f5f5;
+            }
+
+            li .sidenote {
+                margin-left: -1.5em;
+            }
+
+            li li .sidenote {
+                margin-left: -3em;
+            }
+        }
+
     </style>
-    <script type="text/javascript" 
-    src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
-    <script>
-      var bgm = new Howl({
-        src: ['nicopattymenu.mp3'],
-        loop: true,
-        volume: 0,
-      });
-      bgm.play();
-      bgm.fade(0, 0.5, 4000);
-    </script>
 </head>
 <body>
-
-<h1 id="cat">
-╱|、&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="name">corbin aquino!</span> <br>
-(°. ｡ 7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cat-links">[ <a href="https://x.com/corbindreams">twitter</a> ] [ <a href="mailto:corbin_aquino@brown.edu">email</a> ]</span>
-<br>
-|、 ~ヽ
-<br>
-じしf_,)ノ
-</h1>
-
-    <p><span class="quote">"Have you ever experienced a moment of bliss? On the rapids of inspiration maybe, your mind tracing the shapes of truth and beauty? Or in the pulsing ecstasy of love? Or in a glorious triumph achieved with true friends? Or in a conversation on a vine-overhung terrace one star-appointed night? Or perhaps a melody smuggled itself into your heart, charming it and setting it alight with kaleidoscopic emotions? Or when you prayed, and felt heard?"</span><br>- nick bostrom, utopia sci-fi letter</p>
-
-    <p><span class="quote">"The woodpile is so beautiful, about all the joy and beauty that I can stand. I am afraid to turn around and face the mountains, for fear they will overpower me. But I did look, and I am astounded. Everyone must get to experience a profound state like this. I feel totally peaceful. I have lived all my life to get here, and I feel I have come home. I am complete."</span><br>- alexander shulgin, mdma journal</p>
-
-    <hr>
-
-    <p style="font-weight: bold;">it turns out it's possible to feel like this all the time. not just for a moment, but as our baseline.</p>
-
-    <p style="font-weight: bold;">it turns out humans can improve baseline wellbeing by crazy orders of magnitude, by investigating and undoing particular 10-40hz tensing events which are the correlate of all suffering.</p>
-
-    <p>but it's not super simple, and statistically takes a few thousand hours, and it's hidden by lots of terrible pedagogy and fuzzy theory and weird poems and antihelpful translation. the field is very preparadigmatic.</p>
-
-    <p>i want to help fix that! and i love yapping about it! i think this is the most important unsolved-ish problem of our time, and it's also just my version of composing an EDM album :) i think there's almost zero resources that legibly talk about this stuff, so i'm writing one currently. hopefully it's done by the end of 2025.</p>
-
-    <p>i've put some more introductory ramblings at [<a href="https://happymaxxing.com">happymaxxing.com</a>] and hopefully that temporarily serves as a good primer for people that wanna know more!</p>
-
-    <hr>
-
-    <p>other things:</p>
-    
-    <p>i believe wholesomemaxxing = happymaxxing = lovemaxxing (asymptotically, stochastically), and it seems like the hardcoded telos (purpose) and Logos (organizing principle) of life is to engage in that drama!? -- i.e. frolick around the SGD latent space towards the schelling-point-attractor-basin of love</p>
-
-    <p>my favorite stories are kung fu panda and the jesus story. i'm also very inspired by EDM artists like dabin, and improv pianists like jon michael ogletree. my research heroes are nick cammarata and michael edward johnson.</p>
-
-    <hr>
-
-    <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 20px;">
-        <div>
-            <p>thanks for stopping by :)</p>
+    <div class="container">
+        <div class="header">
+            <div class="h1-wrapper" id="h1Wrapper">
+                <h1 id="mainTitle">corbin aquino</h1>
+            </div>
+            <canvas id="cubeCanvas" width="20" height="20"></canvas>
         </div>
-        <img src="avatar.png" alt="corbin's avatar" style="width: 80px; height: 80px;">
-    </div>
+        
+        <div class="content">
+            <p>hello!</p>
 
+            <p>i want to share two things with you that mean a lot to me.</p>
+
+            <hr>
+
+            <p>first...</p>
+
+            <p>i'm really interested in asking, "how can we feel deeply okay?"<span class="sidenote-wrapper"><sup class="sidenote-ref">[1]</sup><span class="sidenote"><span class="sidenote-p">[1] in other words: <em>how can we feel persistent self-love? how do we stop being anxious all the time? how can we feel peace and contentment as a default baseline?</em></span><span class="sidenote-p">other synonyms: <em>peace, meaning, connection, wholeness, beauty, equanimity, belonging, security, contentment, self-love, acceptance, okayness, unity, love</em></span></span></span></p>
+
+            <p>the good news is that this seems to be solvable!</p>
+
+            <ul>
+                <li>i really want more curious nerds to work on this problem, but there are basically zero good explainers, so i'm writing <a href="https://corbinnn.substack.com/archive">some blog posts</a>.</li>
+                <li>we're thinking really hard about this at harvard med school's meditation research program.<span class="sidenote-wrapper"><sup class="sidenote-ref">[2]</sup><span class="sidenote">[2] this is where i work!</span></span></li>
+            </ul>
+
+            <hr>
+
+            <p>second...</p>
+
+            <p>here are some friends from brown and risd!!!<span class="sidenote-wrapper"><sup class="sidenote-ref">[3]</sup><span class="sidenote">[3] this is where i study! i'm currently a third-year.</span></span></p>
+
+            <div class="photo-grid">
+                <img src="https://freight.cargo.site/w/1000/i/V2821327849018779437229083679214/100_1840-2.JPEG" alt="">
+                <img src="https://freight.cargo.site/w/1000/i/H2821328910167732277371040389614/IMG_6031.jpeg" alt="">
+                <img src="https://freight.cargo.site/w/1000/i/C2821329149477343145605053503982/IMG_4628.jpeg" alt="">
+                <img src="https://freight.cargo.site/w/1000/i/Q2821329322267994884042423491054/IMG_8459.JPG" alt="">
+                <img src="https://freight.cargo.site/w/1000/i/F2821329743849883944600516123118/IMG_6001.jpeg" alt="">
+                <img src="https://freight.cargo.site/w/1000/i/U2821329991718784063035761187310/IMG_5439.jpeg" alt="">
+                <img src="https://freight.cargo.site/w/1000/i/W2821337264144720938215680727534/IMG_5637.jpg" alt="">
+                <img src="https://freight.cargo.site/w/1000/i/H2821338362279395646145288428014/IMG_5769.jpg" alt="">
+                <img src="https://freight.cargo.site/w/1000/i/M2821339926083677750798817122798/IMG_5539-2.jpeg" alt="">
+                <img src="https://freight.cargo.site/w/1000/i/A2821346872666327307973216917998/IMG_6608.JPEG" alt="">
+                <img src="https://freight.cargo.site/w/1000/i/Z2821346986242930569802926217710/IMG_6047.jpg" alt="">
+                <img src="https://freight.cargo.site/w/1000/i/R2821348674488948195701090114030/IMG_3644.jpg" alt="">
+            </div>
+
+            <p>and here are some friends' sites too: <a href="https://angelinaso.myportfolio.com/">angi</a>, <a href="https://www.sunkht.xyz/">kenneth</a>, <a href="https://tanishmakadia.com/">tanish</a>, <a href="https://spoonmilk.xyz/">alex</a>, <a href="https://uli.rocks/">uli</a></p>
+
+            <hr>
+
+            <p>misc stuff...</p>
+
+            <ul>
+                <li>i really really really love kung fu panda</li>
+                <li>if i wasn't entirely obsessed with sharing meditation research and didn't think this was the most important and coolest problem of our time, i'd love to share music full-time by teaching piano improvisation!</li>
+            </ul>
+
+            <p>i love talking to people and sharing things! please please please reach out if you want to share something cool with me, or if i can share something cool with you: </p>
+
+            <p class="text-links"><a href="mailto:corbin@brown.edu">email</a> <a href="https://twitter.com/corbindreams">twitter</a> <a href="https://instagram.com/corbin.aquino">instagram</a> <a href="https://linkedin.com/in/corbinaquino">linkedin</a> <a href="https://corbinnn.substack.com/archive">substack</a></p>
+        </div>
+    </div>
+    
     <script>
-        // make external links secure
-        document.querySelectorAll('a[href^="http"]').forEach(link => {
-            link.setAttribute('rel', 'noopener noreferrer');
-            link.setAttribute('target', '_blank');
+        const canvas = document.getElementById('cubeCanvas');
+        const ctx = canvas.getContext('2d');
+        const h1Wrapper = document.getElementById('h1Wrapper');
+        
+        let canvasSize = 20; // internal resolution
+        
+        // cube vertices in 3d space
+        const vertices = [
+            [-1, -1, -1], [1, -1, -1], [1, 1, -1], [-1, 1, -1], // back face
+            [-1, -1, 1], [1, -1, 1], [1, 1, 1], [-1, 1, 1]      // front face
+        ];
+        
+        // cube edges (connecting vertices)
+        const edges = [
+            [0, 1], [1, 2], [2, 3], [3, 0], // back face
+            [4, 5], [5, 6], [6, 7], [7, 4], // front face
+            [0, 4], [1, 5], [2, 6], [3, 7]  // connecting edges
+        ];
+        
+        // faces for shading (vertex indices)
+        const faces = [
+            [0, 1, 2, 3], // back
+            [4, 7, 6, 5], // front
+            [0, 4, 7, 3], // left
+            [1, 5, 6, 2], // right
+            [3, 7, 6, 2], // top
+            [0, 1, 5, 4]  // bottom
+        ];
+        
+        let angleX = 0;
+        let angleY = 0;
+        let angleZ = 0;
+        let time = 0;
+        
+        function updateCanvasSize() {
+            const wrapperHeight = h1Wrapper.offsetHeight;
+            
+            // Set canvas display size to match h1 wrapper height
+            canvas.style.width = wrapperHeight + 'px';
+            canvas.style.height = wrapperHeight + 'px';
+            
+            // Calculate internal resolution based on display size
+            const scale = Math.max(1, Math.floor(wrapperHeight / 80)); // scale factor
+            canvasSize = 20 * scale;
+            
+            canvas.width = canvasSize;
+            canvas.height = canvasSize;
+        }
+        
+        function rotatePoint(point, ax, ay, az) {
+            let [x, y, z] = point;
+            
+            // rotate around x axis
+            let cosX = Math.cos(ax);
+            let sinX = Math.sin(ax);
+            let y1 = y * cosX - z * sinX;
+            let z1 = y * sinX + z * cosX;
+            
+            // rotate around y axis
+            let cosY = Math.cos(ay);
+            let sinY = Math.sin(ay);
+            let x2 = x * cosY + z1 * sinY;
+            let z2 = -x * sinY + z1 * cosY;
+            
+            // rotate around z axis
+            let cosZ = Math.cos(az);
+            let sinZ = Math.sin(az);
+            let x3 = x2 * cosZ - y1 * sinZ;
+            let y3 = x2 * sinZ + y1 * cosZ;
+            
+            return [x3, y3, z2];
+        }
+        
+        function projectTo2D(point) {
+            const distance = 8;
+            const [x, y, z] = point;
+            const scale = distance / (distance + z);
+            return [
+                (x * scale * 0.5 + 1) * canvasSize / 2,
+                (y * scale * 0.5 + 1) * canvasSize / 2,
+                z
+            ];
+        }
+        
+        function drawPixelLine(x0, y0, x1, y1, brightness, edgeIndex) {
+            x0 = Math.floor(x0);
+            y0 = Math.floor(y0);
+            x1 = Math.floor(x1);
+            y1 = Math.floor(y1);
+            
+            const dx = Math.abs(x1 - x0);
+            const dy = Math.abs(y1 - y0);
+            const sx = x0 < x1 ? 1 : -1;
+            const sy = y0 < y1 ? 1 : -1;
+            let err = dx - dy;
+            
+            let x = x0;
+            let y = y0;
+            let pixelCount = 0;
+            const pixelSize = Math.max(1, Math.floor(canvasSize / 20));
+            
+            while (true) {
+                if (x >= 0 && x < canvasSize && y >= 0 && y < canvasSize) {
+                    // rainbow gradient calculation
+                    const progress = pixelCount / Math.max(dx, dy, 1);
+                    const hue = ((time * 2 + edgeIndex * 30 + progress * 360) % 360) / 360;
+                    
+                    // convert hue to rgb
+                    const c = brightness * 0.8;
+                    const x_val = c * (1 - Math.abs((hue * 6) % 2 - 1));
+                    const m = brightness * 0.4;
+                    
+                    let r, g, b;
+                    if (hue < 1/6) { r = c; g = x_val; b = 0; }
+                    else if (hue < 2/6) { r = x_val; g = c; b = 0; }
+                    else if (hue < 3/6) { r = 0; g = c; b = x_val; }
+                    else if (hue < 4/6) { r = 0; g = x_val; b = c; }
+                    else if (hue < 5/6) { r = x_val; g = 0; b = c; }
+                    else { r = c; g = 0; b = x_val; }
+                    
+                    r = Math.floor((r + m) * 255);
+                    g = Math.floor((g + m) * 255);
+                    b = Math.floor((b + m) * 255);
+                    
+                    const alpha = brightness * 0.9;
+                    const color = `rgba(${r}, ${g}, ${b}, ${alpha})`;
+                    
+                    ctx.fillStyle = color;
+                    ctx.fillRect(x, y, pixelSize, pixelSize);
+                }
+                
+                if (x === x1 && y === y1) break;
+                
+                const e2 = 2 * err;
+                if (e2 > -dy) {
+                    err -= dy;
+                    x += sx;
+                }
+                if (e2 < dx) {
+                    err += dx;
+                    y += sy;
+                }
+                pixelCount++;
+            }
+        }
+        
+        function getFaceBrightness(face, rotatedVertices) {
+            // calculate face normal for lighting
+            const v0 = rotatedVertices[face[0]];
+            const v1 = rotatedVertices[face[1]];
+            const v2 = rotatedVertices[face[2]];
+            
+            const edge1 = [v1[0] - v0[0], v1[1] - v0[1], v1[2] - v0[2]];
+            const edge2 = [v2[0] - v0[0], v2[1] - v0[1], v2[2] - v0[2]];
+            
+            // cross product for normal
+            const normal = [
+                edge1[1] * edge2[2] - edge1[2] * edge2[1],
+                edge1[2] * edge2[0] - edge1[0] * edge2[2],
+                edge1[0] * edge2[1] - edge1[1] * edge2[0]
+            ];
+            
+            // normalize
+            const length = Math.sqrt(normal[0] * normal[0] + normal[1] * normal[1] + normal[2] * normal[2]);
+            if (length > 0) {
+                normal[0] /= length;
+                normal[1] /= length;
+                normal[2] /= length;
+            }
+            
+            // simple lighting calculation
+            const lightDir = [0.5, 0.5, 1];
+            const dot = normal[0] * lightDir[0] + normal[1] * lightDir[1] + normal[2] * lightDir[2];
+            return Math.max(0.2, Math.abs(dot));
+        }
+        
+        function animate() {
+            ctx.clearRect(0, 0, canvasSize, canvasSize);
+            
+            // rotate the cube
+            const rotatedVertices = vertices.map(vertex => 
+                rotatePoint(vertex, angleX, angleY, angleZ)
+            );
+            
+            // project to 2d
+            const projectedVertices = rotatedVertices.map(vertex => 
+                projectTo2D(vertex)
+            );
+            
+            // sort faces by average z depth for proper rendering order
+            const facesWithDepth = faces.map((face, index) => {
+                const avgZ = face.reduce((sum, vertexIndex) => 
+                    sum + projectedVertices[vertexIndex][2], 0) / face.length;
+                return { face, avgZ, index };
+            });
+            
+            facesWithDepth.sort((a, b) => a.avgZ - b.avgZ);
+            
+            // draw faces (filled with muted colors)
+            const pixelSize = Math.max(1, Math.floor(canvasSize / 20));
+            facesWithDepth.forEach(({ face }) => {
+                const brightness = getFaceBrightness(face, rotatedVertices);
+                const gray = Math.floor(brightness * 60);
+                const alpha = brightness * 0.3;
+                ctx.fillStyle = `rgba(${gray}, ${gray}, ${gray}, ${alpha})`;
+                
+                // draw face outline with subtle gray
+                for (let i = 0; i < face.length; i++) {
+                    const start = projectedVertices[face[i]];
+                    const end = projectedVertices[face[(i + 1) % face.length]];
+                    const faceGray = Math.floor(brightness * 80);
+                    const faceAlpha = brightness * 0.4;
+                    ctx.fillStyle = `rgba(${faceGray}, ${faceGray}, ${faceGray}, ${faceAlpha})`;
+                    
+                    // simple face line without rainbow
+                    const x0 = Math.floor(start[0]);
+                    const y0 = Math.floor(start[1]);
+                    const x1 = Math.floor(end[0]);
+                    const y1 = Math.floor(end[1]);
+                    
+                    if (x0 >= 0 && x0 < canvasSize && y0 >= 0 && y0 < canvasSize) {
+                        ctx.fillRect(x0, y0, pixelSize, pixelSize);
+                    }
+                }
+            });
+            
+            // draw rainbow edges for wireframe effect
+            edges.forEach((edge, edgeIndex) => {
+                const start = projectedVertices[edge[0]];
+                const end = projectedVertices[edge[1]];
+                const avgZ = (start[2] + end[2]) / 2;
+                const brightness = Math.max(0.77, 1 - (avgZ + 2) / 4);
+                drawPixelLine(start[0], start[1], end[0], end[1], brightness, edgeIndex);
+            });
+            
+            // increment rotation angles and time
+            angleX += 0.01;
+            angleY += 0.012;
+            angleZ += 0.008;
+            time += 1;
+            
+            requestAnimationFrame(animate);
+        }
+        
+        // Set up ResizeObserver to watch h1 wrapper size changes
+        let resizeTimeout;
+        const resizeObserver = new ResizeObserver(() => {
+            if (resizeTimeout) {
+                cancelAnimationFrame(resizeTimeout);
+            }
+            resizeTimeout = requestAnimationFrame(() => {
+                updateCanvasSize();
+            });
         });
+        
+        // Start observing the h1 wrapper element
+        resizeObserver.observe(h1Wrapper);
+        
+        // Initial setup
+        updateCanvasSize();
+        animate();
     </script>
+    
 </body>
 </html>
