@@ -14,7 +14,7 @@
         }
         
         body {
-            font-family: 'Latin Modern Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Latin Modern Sans', 'Inter', 'SF Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background-color: #faf6f1;
             color: ##181a1e;
             line-height: 1.4;
@@ -82,7 +82,8 @@
         }
         
         .content {
-            font-size: 1.25rem;
+            --content-font-size: 1.25rem;
+            font-size: var(--content-font-size);
             opacity: 0.9;
             line-height: 1.6;
             position: relative;
@@ -99,7 +100,8 @@
         }
 
         .content ul {
-            margin-left: 1.5em;
+            --ul-indent: calc(1.5 * var(--content-font-size));
+            margin-left: var(--ul-indent);
             margin-bottom: 1em;
         }
 
@@ -208,11 +210,11 @@
             }
 
             li .sidenote {
-                margin-left: -1.5em;
+                margin-left: calc(-1 * var(--ul-indent));
             }
 
             li li .sidenote {
-                margin-left: -3em;
+                margin-left: calc(-2 * var(--ul-indent));
             }
         }
 
